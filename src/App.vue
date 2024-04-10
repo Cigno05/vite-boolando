@@ -1,38 +1,30 @@
 <!-- JS -->
 <script>
-//import
-//import
+import HeaderNavBar from './components/HeaderNavBar.vue'
+import MainCards from './components/MainCards.vue'
 
 export default {
 
-data() {
-    return {
+  components: {
+    HeaderNavBar,
+    MainCards
+},
 
-	}
-  },
-  watch: {
-	
-  },
-  methods: {
 
-  },
-  computed: {
-
-  },
-  mounted() {
-
-  }
 }
 </script>
 
 <!-- HTML -->
 
 <template>
-  <h1>Ciao</h1>
+  <HeaderNavBar />
+  <MainCards />
+
 </template>
 
 <!-- CSS -->
 
 <style lang="scss">
+@use './style/general';
 
 </style>
