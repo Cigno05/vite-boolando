@@ -2,8 +2,14 @@
 <script>
 
 export default {
-
-
+    data() {
+        return {
+            currentIndex: 0,
+            gendersArray: ['Uomo', 'Donna', 'Bambino'],
+            actionsArray: ['Contatti', 'Store', 'Offerte']
+        };
+    },
+    
 }
 </script>
 
@@ -14,19 +20,26 @@ export default {
         <nav class="navigation">
             <nav class="container page-header">
                 <div class="row nav">
-                    <ul class="col gender flex gap-5">
-                        <li><a href="#">Uomo</a></li>
-                        <li><a href="#">Donna</a></li>
-                        <li><a href="#">Bambino</a></li>
-                    </ul>
+                    <div class="gender-list">
+                        <ul class="col gender flex gap-5" v-for="(gender) in gendersArray">
+    
+                            <li><a href="#">{{ gender }}</a></li>
+                            
+                        </ul>
+                    </div>
+
                     <div class="col logo">
                         <img src="../assets/boolean-logo.png" alt="logo boolean">
                     </div>
-                    <ul class="col profile-app flex gap-5">
-                        <li><a href="#">P</a></li>
-                        <li><a href="#">H</a></li>
-                        <li><a href="#">C</a></li>
-                    </ul>
+
+                    <div class="action-list">
+                        <ul class="col profile-app flex gap-5" v-for="(action) in actionsArray">
+    
+                            <li><a href="#">{{ action }}</a></li>
+                            
+                        </ul>
+                    </div>
+                    
                 </div>
             </nav>
         </nav>
@@ -55,11 +68,21 @@ header {
     
 }
 
-.page-header .row {
-    justify-content: space-between;
-    max-height: 30px;
-    align-items: center;
-    padding: 0 10px;
+.page-header {
+
+    .row {
+        justify-content: space-between;
+        max-height: 30px;
+        align-items: center;
+        padding: 0 10px;
+    }
+}
+
+.gender-list,
+.action-list {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 
 .logo {
