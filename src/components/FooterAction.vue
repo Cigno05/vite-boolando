@@ -38,9 +38,10 @@ export default {
 <!-- CSS -->
 
 <style lang="scss">
+@use '../style/partials/variables' as *;
 
 footer {
-    background-color: #1A1A1A;
+    background-color: $dark-gray;
     color: white;
 }
 
