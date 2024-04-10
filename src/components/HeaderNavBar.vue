@@ -36,6 +36,7 @@ export default {
 <!-- CSS -->
 
 <style lang="scss" scoped>
+// @use '../style/partials/variabeles';
 
 header {
     
@@ -44,6 +45,7 @@ header {
 }
 
 .navigation {
+    // background-color: $brand-orange;
     background-color: #FF6900;
     position: fixed;
     top: 0;
