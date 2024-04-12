@@ -1,17 +1,23 @@
 <!-- JS -->
 <script>
 import HeaderNavBar from './components/HeaderNavBar.vue'
-import MainCards from './components/MainCards.vue'
+import Cards from './components/Cards.vue'
 import FooterAction from './components/FooterAction.vue'
+import productsData from './Data/db.json'
 
 export default {
 
   components: {
     HeaderNavBar,
-    MainCards,
-    FooterAction
-},
+    Cards,
+    FooterAction,
+  },
 
+  data() {
+    return {
+      products: productsData.products
+    }
+  }
 
 }
 </script>
@@ -20,7 +26,14 @@ export default {
 
 <template>
   <HeaderNavBar />
-  <MainCards />
+  <main>
+    <div class="container product">
+      <div class="row">
+        <Cards :products="products"/>
+      </div>
+    </div>
+  </main>
+
   <FooterAction />
 
 </template>
@@ -29,5 +42,4 @@ export default {
 
 <style lang="scss">
 @use './style/general';
-
 </style>

@@ -4,7 +4,6 @@
 export default {
     data() {
         return {
-            currentIndex: 0,
             gendersArray: ['Uomo', 'Donna', 'Bambino'],
             actionsArray: ['Contatti', 'Store', 'Offerte']
         };
