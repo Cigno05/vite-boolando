@@ -2,18 +2,23 @@
 <script>
 
 export default {
-    
+
     props: {
-         products: Array,
-         test: String,
+        products: Array,
+        test: String,
     },
     data() {
         return {
+            
         };
+    },
+    methods: {
+        
+
     },
 
     mounted() {
-        console.log(this.products);
+        
     }
 
 }
@@ -32,30 +37,34 @@ export default {
                         <img :src="`/img/${productItem.backImage}`" alt="">
                     </div>
                 </div>
-               <div class="card-heart">
+                <div class="card-heart">
                     &hearts;
                     <div class="overlay-heart">
                         &hearts;
                     </div>
                 </div>
 
-                <div class="card-badge">
-                    <span class="card-discount">
-                        {{ ptoductItem.badges.type }}
-                    </span>
-                    <span class="card-eco">
-                        {{ card.eco }}
-                    </span>
-                </div>
+                <ul class="card-badge">
+                    <li v-for="(badgeItem, i) in productItem.badges" :key="i" :class="`badge--${badgeItem.type}`">
+                        {{ badgeItem.value }}
+                    </li>
+                    <!-- <li class="badge--discount">
+                        ciao
+                    </li> -->
+                    <!-- <span class="badge--tag">
+                        {{ }}
+                    </span> -->
+                </ul>
 
             </div>
-           
+
             <div class="card-description">
                 <h6 class="brand">{{ productItem.brand }}</h6>
-                <h3 class="name-product">{{ productItem.name }}</h3>
-                <h5 class="price-product">{{ (productItem.price) }} &euro; <span class="price-old">{{ productItem.price }} &euro;</span></h5>
+                <h3 class="product--name">{{ productItem.name }}</h3>
+                <h5 class="product--price">{{ productItem.price }} &euro; <span class="price-old">{{ productItem.price
+                        }} &euro;</span></h5>
             </div>
-            
+
         </div>
     </div>
 </template>
@@ -92,15 +101,23 @@ export default {
 
 }
 
-[class^="card-discount"] {
+.card-badge {
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.badge--discount {
     background: red;
     color: white;
     z-index: 5;
     padding: 5px 10px;
     margin-right: 5px;
+    order: -1;
 }
 
-.card-eco {
+.badge--tag {
     background-color: green;
     color: white;
     z-index: 5;
@@ -108,7 +125,7 @@ export default {
     left: 50px;
 }
 
-.price-product {
+.product--price {
     color: red;
     font-weight: bold;
 }
