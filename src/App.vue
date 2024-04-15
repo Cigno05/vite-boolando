@@ -1,24 +1,39 @@
 <!-- JS -->
 <script>
 import HeaderNavBar from './components/HeaderNavBar.vue'
-import Cards from './components/Cards.vue'
+import AppContent from './components/AppContent.vue'
 import FooterAction from './components/FooterAction.vue'
-import productsData from './Data/db.json'
+import axios from 'axios'
+import { store } from './stores/store.js'
 
 export default {
 
   components: {
     HeaderNavBar,
-    Cards,
+    AppContent,
     FooterAction,
   },
 
   data() {
     return {
-      products: productsData.products
-    }
-  }
 
+    }
+  },
+  methods: {
+    fetchProducts() {
+      axios.get('http://localhost:3000/products').then((res) => {
+        // console.log(res) // risposta del server
+        // console.log(res.data) // array dei prodotti
+        store.products = res.data // salviamo l'arrai di prodotti dentro lo store
+      })
+    }
+  },
+  created() {
+    this.fetchProducts()
+  },
+  mounted() {
+    // axios.get('http://localhost:3000/products')
+  }
 }
 </script>
 
@@ -26,15 +41,9 @@ export default {
 
 <template>
   <HeaderNavBar />
-  <main>
-    <div class="container product">
-      <div class="row">
-        <Cards :products="products"/>
-      </div>
-    </div>
-  </main>
-
+  <AppContent />
   <FooterAction />
+
 
 </template>
 
